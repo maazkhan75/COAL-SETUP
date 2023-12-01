@@ -1,4 +1,4 @@
-[org 0x0100]    ;;;PROJECT PARTNERS ->    L22-6726 (MAAZ)  & L22-6755 ( NAAIL) 
+[org 0x0100]    ;;;( TETRIS GAME MADE BY MAAZ KHAN in Nov,2023 as a coal project )
 
 jmp start
 
