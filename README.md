@@ -9,9 +9,9 @@ Welcome to the Tetris game developed in Assembly 8088 language! This classic puz
 ## 🎮 Gameplay Instructions
 
 - **Difficulty Modes**: The game can be played in three different difficulty modes:
-	- `Easy` 😌
-	- `Medium` 😅
-	- `Hard` 😬
+	- `Easy`
+	- `Medium`
+	- `Hard`
 - **Game Duration**: Total Game Time = 15 minutes (900 seconds) ⏳
 - **Game Over Conditions**: The game will be over if the shapes touch the roof or time is completed. 🚫
 - **Controls**:
@@ -34,10 +34,6 @@ For watching the complete gameplay of the game, check out the YouTube video at t
 - Open the dos.config file at the estimated path below and paste the commands at the end of the document. Replace the defaultUser with your default username registered on Windows: `C:\Users\defaultUser\Downloads\TetrisGame-0x88\dosboxPortable\Data\settings`
 - After mounting, start the game by clicking on the dosbox.exe shortcut and wait for approximately 1 minute for compiling the code (compile time depends on the specs of your machine).
 - Once the t.com file is created, you can comment out the line nasm t.asm -o t.com in the config file of dosbox located at `TetrisGame-0x88\dosboxPortable\Data\settings\dosbox.conf` for quicker startup in the future. This can be done by putting a # before the line.
-	
-### 🛠️ Configuration
-Add the following lines at the end of the dos.config file:
-
 	
 ### 🛠️ Configuration
 Add the following lines at the end of the dos.config file:
