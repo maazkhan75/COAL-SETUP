@@ -32,12 +32,9 @@ For watching the complete gameplay of the game, check out the YouTube video at t
 ## 🚀 Startup Guide
 
 ### 💻 Mounting Guide for DOSBox
-- Open the dos.config file at the estimated path below and paste the commands at the end of the document. Replace the defaultUser with your default username registered on Windows: `C:\Users\defaultUser\Downloads\TetrisGame-0x88\dosboxPortable\Data\settings`
-- After mounting, start the game by clicking on the dosbox.exe shortcut and wait for approximately 1 minute for compiling the code (compile time depends on the specs of your machine).
-- Once the t.com file is created, you can comment out the line nasm t.asm -o t.com in the config file of dosbox located at `TetrisGame-0x88\dosboxPortable\Data\settings\dosbox.conf` for quicker startup in the future. This can be done by putting a # before the line.
-	
-### 🛠️ Configuration
-Add the following lines at the end of the dos.config file:
+- Open the dosbox.conf file at the estimated path: `C:\Users\defaultUser\Downloads\TetrisGame-0x88\dosboxPortable\Data\settings\dosbox.conf`
+  
+- Add the following lines at the end of the dos.config file:
 ```
 # Lines in this section will be run at startup.
 mount c:  "C:\Users\defaultUser\Downloads\TetrisGame-0x88\"
@@ -47,14 +44,18 @@ nasm t.asm -o t.com
 t.com
 ```
 
+- After mounting, start the game by clicking on the dosbox.exe shortcut and wait for approximately 1 minute for compiling the code (compile time depends on the specs of your machine).
+  
+- Once the t.com file is created, you can comment out the line nasm t.asm -o t.com in the config file of dosbox located at `TetrisGame-0x88\dosboxPortable\Data\settings\dosbox.conf` for quicker startup in the future. This can be done by putting a # before the line.
+	
+### 🛠️ Configuration
+
+
 ## 📜 License
 
 This project is licensed under the `GNU General Public License`.
 
-## 📦 Installation
-
-
-Clone the repository:
+## 📦 Clone repository
 
 ```bash
 git clone https://github.com/maazkhan75/Tetris-0x88
