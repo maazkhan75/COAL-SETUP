@@ -1,0 +1,26 @@
+(MOUNTING GUIDE FOR DOSBOX)
+
+----------------------------------------------------------------------------------------------------------
+open dos.config file at the estimated path below and paste commands at the end of the document
+You have to replace the defaultUser word with your default user name registered on windows....
+           
+C:\Users\defaultUser\Downloads\TetrisGame-0x88\dosboxPortable\Data\settings                         
+..........................................................................................................
+
+After mounting you have to simply start the game by clicking on the dosbox.exe shortcut                   
+and wait for 1 minute approx for compiling the code (compile time depends on the specs of your machine)                                                  
+once the t.com file is created you can then remove then put # before nasm t.asm -o t.com line in the config file  for commenting the line
+and it will assure quick startup in future by simply opening the dosbox.exe shortcut and game will start..       
+
+FULL SCREEN MODE SHORTCUT : ALT + ENTER ( for amazing visual experience of the game )       
+----------------------------------------------------------------------------------------------------------
+
+
+
+# Lines in this section will be run at startup.
+mount c:  "C:\Users\defaultUser\Downloads\TetrisGame-0x88\"
+c:
+
+nasm t.asm -o t.com
+t.com
+

@@ -1,11 +1,12 @@
-[org 0x0100]     ;;;( TETRIS GAME MADE BY MAAZ KHAN in Nov,2023 as a coal project ) 
+[org 0x0100]     ;;;( TETRIS GAME MADE BY MAAZ KHAN in Nov,2023 as a coal project ) github profile: https://github.com/maazkhan75
 
 jmp start
 
-gameName: db 'T E T R I S   G A M E',0    ;null terminated string..  (we will use printStr with block instrc. because it is fast)
+developedBy: db ' D E V E L O P E D   B Y',0    ;null terminated string..  (we will use printStr with block instrc. because it is fast)
+developerName: db '( M  A  A  Z   -   K  H  A  N )',0    ;null terminated string..  (we will use printStr with block instrc. because it is fast)
 gameInfo_A: db'I M P L E M E N T E D    I N',0 
-gameInfo_B: db'(  8 0 8 8    A S S E M B L Y    L A N G U A G E  )',0
-
+gameInfo_B: db'( 0 x 8 8    A S S E M B L Y    L A N G U A G E  )',0
+copyrightNotice: db'(c) CopyRight 2024 - maazkhan75  ( ALL__RIGHTS__RESERVED! )',0
 instructionsLabel: db '-<<-  G A M E P L A Y     I N S T R U C T I O N S  ->>-', 0    
 instruction1:db '  Total Game_Time = 15 minutes (900sec)', 0
 instruction2:db '  Game will be over if shapes touch the roof or time is completed', 0
@@ -85,6 +86,9 @@ gameStartedFlag: dw 0
 shapeTypeIterator: dw 0
 oldShapeType: dw 0
 
+gamePause: dw 0
+horizontalMovBlockFlag: dw 0
+
 clrScr:
 		push es
 		push ax
@@ -146,7 +150,7 @@ shortDelay:
 	push bx
 	push cx
 	
-	mov cx,0x7777
+	mov cx,0x5555
 	mov bx,0
 	
 	shortDelaying: 
@@ -156,6 +160,324 @@ shortDelay:
 	pop cx
 	pop bx
 	ret
+	
+	
+
+
+makeGameLogo:
+
+push bp
+push ax
+push bx
+push cx
+push dx
+push si
+push di
+push es
+push ds
+
+mov ax,0xb800
+mov es,ax
+mov al,0x20  ;ASCII SET OF SPACE
+
+;;  IMPORTANT LEARNING NOTE : even hi hona chahiya cell location x  in ( es:x ) warna wo ghalat 1 1 bytes pichla  ur agala cell ki utha leta hai.... 
+
+
+
+
+;;--------------------------making T -----------------------
+mov ah,0xA0
+
+mov dx,8
+mov di,1796
+L1:
+mov [es:di],ax
+call shortDelay
+add di,2
+dec dx
+jnz L1
+
+
+
+mov dx,4
+mov di,1962
+L2:
+mov [es:di],ax
+call shortDelay
+mov [es:di+2],ax
+call shortDelay
+add di,160
+dec dx
+jnz L2
+
+
+call delay
+call delay
+call delay
+call delay
+;;--------------------------making E -----------------------
+mov ah,0xC0
+
+mov dx,6
+mov di,1816
+L3:
+mov [es:di],ax
+call shortDelay
+add di,2
+dec dx
+jnz L3
+
+mov dx,5
+mov di,1814
+L4:
+mov [es:di],ax
+call shortDelay
+mov [es:di+2],ax
+call shortDelay
+add di,160
+dec dx
+jnz L4
+
+
+mov dx,5
+mov di,2136
+L5:
+mov [es:di],ax
+call shortDelay
+mov [es:di+2],ax
+call shortDelay
+add di,2
+dec dx
+jnz L5
+
+
+mov dx,5
+mov di,2456
+L6:
+mov [es:di],ax
+call shortDelay
+mov [es:di+2],ax
+call shortDelay
+add di,2
+dec dx
+jnz L6
+
+
+call delay
+call delay
+call delay
+call delay
+; ; ;------------------- making T -----------------------------
+mov ah,0x90
+
+mov dx,8
+mov di,1830
+L7:
+mov [es:di],ax
+call shortDelay
+add di,2
+dec dx
+jnz L7
+
+
+
+mov dx,4
+mov di,1996
+L8:
+mov [es:di],ax
+call shortDelay
+mov [es:di+2],ax
+call shortDelay
+add di,160
+dec dx
+jnz L8
+
+
+call delay
+call delay
+call delay
+call delay
+;;-------------------- making R -----------------------
+mov ah,0x70
+
+mov [es:2008],ax
+call shortDelay
+mov [es:2008+2],ax
+call shortDelay
+mov [es:2008+160],ax
+call shortDelay
+mov [es:2008+160+2],ax
+call shortDelay
+mov [es:2008+160+160],ax
+call shortDelay
+mov [es:2008+160+160+2],ax
+call shortDelay
+mov [es:2008+160+160+160],ax
+call shortDelay
+mov [es:2008+160+160+160+2],ax
+
+
+mov [es:1848],ax
+call shortDelay
+mov [es:1848+2],ax
+call shortDelay
+mov [es:1848+2+2],ax
+call shortDelay
+mov [es:1848+2+2+2],ax
+call shortDelay
+mov [es:1848+2+2+2+2],ax
+call shortDelay
+mov [es:1848+2+2+2+2+2],ax
+call shortDelay
+mov [es:1848+2+2+2+2+2+2],ax
+call shortDelay
+mov [es:1848+2+2+2+2+2+2+2],ax
+
+
+mov [es:2020],ax
+call shortDelay
+mov [es:2020+2],ax
+call shortDelay
+mov [es:2020+160],ax
+call shortDelay
+mov [es:2020+160+2],ax
+call shortDelay
+mov [es:2020+160+2-2],ax
+call shortDelay
+mov [es:2020+160+2-2-2],ax
+call shortDelay
+mov [es:2020+160+2-2-2-2],ax
+call shortDelay
+mov [es:2020+160+2-2-2-2-2],ax
+call shortDelay
+mov [es:2020+160+2-2-2-2-2-2],ax
+
+
+mov [es:2338],ax
+call shortDelay
+mov [es:2338+2],ax
+call shortDelay
+mov [es:2338+160],ax
+call shortDelay
+mov [es:2338+160+2],ax
+call shortDelay
+
+
+call delay
+call delay
+call delay
+call delay
+;;----------------- making I --------------------------
+mov ah,0x60
+
+mov [es:1866],ax
+call shortDelay
+mov [es:1868],ax
+call shortDelay
+mov [es:1866+160],ax
+call shortDelay
+mov [es:1868+160],ax
+call shortDelay
+mov [es:1866+160+160],ax
+call shortDelay
+mov [es:1868+160+160],ax
+call shortDelay
+mov [es:1866+160+160+160],ax
+call shortDelay
+mov [es:1868+160+160+160],ax
+call shortDelay
+mov [es:1866+160+160+160+160],ax
+call shortDelay
+mov [es:1868+160+160+160+160],ax
+
+
+call delay
+call delay
+call delay
+call delay
+;;--------------------- making S -------------------
+mov ah,0x50
+
+mov [es:1872],ax
+call shortDelay
+mov [es:1872+2],ax
+call shortDelay
+mov [es:1872+2+2],ax
+call shortDelay
+mov [es:1872+2+2+2],ax
+call shortDelay
+mov [es:1872+2+2+2+2],ax
+call shortDelay
+mov [es:1872+2+2+2+2+2],ax    ;;we can also write +2+2+2+2+2 as +10   :) happy coding...
+call shortDelay
+
+
+mov [es:1872+160],ax
+call shortDelay
+mov [es:1872+160+2],ax
+call shortDelay
+mov [es:1872+160+160],ax   
+call shortDelay
+mov [es:1872+160+160+2],ax
+
+
+mov [es:2194],ax
+call delay
+mov [es:2194+2],ax
+call delay
+mov [es:2194+2+2],ax
+call delay
+mov [es:2194+2+2+2],ax
+call delay
+mov [es:2194+2+2+2+2],ax
+call delay
+mov [es:2194+2+2+2+2+160],ax
+call delay
+mov [es:2194+2+2+2+2+160-2],ax
+call delay
+mov [es:2194+2+2+2+2+160+160],ax
+call delay
+mov [es:2194+2+2+2+2+160+160-2],ax
+call delay
+mov [es:2194+2+2+2+2+160+160-2-2],ax
+call delay
+mov [es:2194+2+2+2+2+160+160-2-2-2],ax
+call delay
+mov [es:2194+2+2+2+2+160+160-2-2-2-2],ax
+call delay
+mov [es:2194+2+2+2+2+160+160-2-2-2-2-2],ax
+call delay
+call delay
+call delay
+
+
+      push 11    ;x  or col  or x-pos
+	  push 23   ;y  or row  or y-pos
+	  push 0x07
+	  mov ax,copyrightNotice
+	  push ax
+	  call printStrWBI
+
+
+mov cx,150
+stuckOnLogo:
+call delay
+loop stuckOnLogo
+
+call curtainEffect
+
+pop ds
+pop es
+pop di
+pop si
+pop dx
+pop cx
+pop bx
+pop ax
+pop bp
+ret 
+
+	
 	
 generateRandomNumber:
 	push ax
@@ -244,8 +566,9 @@ finded:
 	ret
 	
 	
-	
-beep_function:
+;;;SOUND is not implemented in game cuz of complexities but below code is a simple way to produce beep.... 
+;-------------------------------------------------------------------------------------------------------------	
+beep_function:           
     ; Parameters:
     ;   AH: Frequency (in Hz) to play
     ;   CX: Duration of the beep in milliseconds
@@ -264,6 +587,8 @@ beep_function:
     pop cx
     pop ax
     ret
+	
+;-------------------------------------------------------------------------------------------------------------
 	
 timer: 
 	push ax
@@ -326,6 +651,14 @@ kbisr:
 	je bypass_27
 	jmp nextcmp
 	bypass_27:
+	
+	;-----------------------------------
+	cmp word[horizontalMovBlockFlag],1
+	jne skip_block_l
+	jmp bypassedAllKeys
+	skip_block_l:
+	
+	;------------------------------------
 	
 	;mov byte[horizontalKeyPress],'l'  ;for left movement ( l for left..)
 			
@@ -604,6 +937,14 @@ kbisr:
 		jmp nomatch
 		bypass_28:
 				
+				
+	;-----------------------------------
+	cmp word[horizontalMovBlockFlag],1
+	jne skip_block_r
+	jmp bypassedAllKeys
+	skip_block_r:
+	;------------------------------------
+	
 		;mov byte[horizontalKeyPress],'r'  ;for right movement ( r for right..)
 		
 	    cmp word[currShapeNo],1
@@ -875,6 +1216,21 @@ kbisr:
 	  
 		
   nomatch:
+				
+		cmp al,0x19
+		jne startPause
+		mov word[gamePause],1
+		mov word[gameTimerFlag],0
+		mov word[horizontalMovBlockFlag],1
+		startPause:
+		
+		cmp al,0x18
+		jne stopPause
+		mov word[gamePause],0
+		mov word[gameTimerFlag],1
+		mov word[horizontalMovBlockFlag],0
+		stopPause:
+		
 		cmp al,0xB9   ;SPACE KEY scanCode..
 		je rotationTrigerred
 		jmp noRotation
@@ -1255,7 +1611,7 @@ ShiftCols:
 	  mov [curtainEffectCurrRow],ax
 	  cmp ax,25
 	  jne verticalLines
-	  call delay
+	  call shortDelay
 	  
 	  mov bx,[curtainEffectCol1]
 	  inc bx
@@ -1487,7 +1843,9 @@ printVertical:
 	add word[currentRowL],1   ;shift to the other ( new ) row 
 	add word[currentRowR],1   ;shift to the other ( new ) row 
 	
-	call delay
+	call shortDelay
+	call shortDelay
+	
 	
 	
 	
@@ -1496,11 +1854,15 @@ printVertical:
 	
 	;---now drawing bottom boundary
 	
-	mov cx,33  ;each iteration make two characters so half of 80 will be 40   
+	;NOW note that in horizontal boundary making:
+	;each iteration make two characters so counter will be half the no of cols in between 
+	;(means you need to half the diff of cols points in our case 49-22 = 27/2 = 13.5 so we will 14 as counter)
+	
+	mov cx,14  
 	mov word[currentRowL],24
 	mov word[currentRowR],24
-	mov word[currentColR],61
-	mov word[currentColL],0
+	mov word[currentColL],22
+	mov word[currentColR],49
 	
 
  printHorizontal:
@@ -1526,8 +1888,8 @@ printVertical:
 	mov al,0x20
 	mov word[es:di],ax
 
-	add word[currentColL],1   ;shift to the other ( new ) row 
-	sub word[currentColR],1   ;shift to the other ( new ) row 
+	add word[currentColL],1   ;shift to the other ( new ) col
+	sub word[currentColR],1   ;shift to the other ( new ) col
 	
 	call shortDelay
 	
@@ -1705,30 +2067,39 @@ push ax
 push cx
 
      call clrScr
+	  ;printing tetris logo here..
 	  
-	  ;printing gameName
 	  
-	  push 29    ;x  or col  or x-pos
-	  push 12   ;y  or row  or y-pos
-	  push 0x0A
-	  mov ax,gameName
+	  
+	  
+	  ;printing developerInfo
+	  
+	  push 27    ;x  or col  or x-pos
+	  push 11   ;y  or row  or y-pos
+	  push 0x07
+	  mov ax,developedBy
 	  push ax
-	  mov cx,50  
+	  call printStrWBIFast
+	  
+	  
+	  push 24    ;x  or col  or x-pos
+	  push 14   ;y  or row  or y-pos
+	  push 0x0A
+	  mov ax,developerName
+	  push ax
+	  mov cx,20  
 	  waiting1:     ;(take some time before printing and avoid immediate printing for creating seemless user-exprience)
 	  call delay
 	  loop waiting1
 	  call printStrWBI
 	  
-	  push 29    ;x  or col  or x-pos
-	  push 12   ;y  or row  or y-pos
-	  push 0x00     ;simply prints black on it so it will make a fade effect or erasing effect
-	  mov ax,gameName
-	  push ax
-	  mov cx,55  
-	  waiting2:    
+	  mov cx,60
+	  waitForSomeTimeBeforeErasing:
 	  call delay
-	  loop waiting2
-	  call printStrWBI
+	  loop waitForSomeTimeBeforeErasing
+	  
+	  
+	  call curtainEffect
 	  
 	  ;printing info regarding game...
 	  
@@ -1997,10 +2368,10 @@ push cx
 ;MAKING INITAL SETUP PRINTING OF BOUNDARIES AND SCORE AND TIMER LABEL PRINTING...  
 	  
 	  push 0x40
-	  push 0    ;x  or col  or x-pos
-	  push 0    ;y  or row  or y-pos
-	  push 61   ;x  or col  or x-pos
-	  push 0    ;y  or row  or y-pos
+	  push 22    ;x1  or col  or x-pos
+	  push 0    ;y1  or row  or y-pos
+	  push 49   ;x2  or col  or x-pos
+	  push 0    ;y2  or row  or y-pos
 	  call drawBoundary
 	  
 	 
@@ -2049,7 +2420,7 @@ push cx
 	  call makeDashes
 	  
 	  
-	  push 66    ;x  or col  or x-pos   ;67
+	  push 65    ;x  or col  or x-pos   ;67
 	  push 14   ;y  or row  or y-pos
 	  push 0xC0   ;0x40 to stop blinking 
 	  mov ax,NextShapeLabel
@@ -2102,7 +2473,7 @@ gameOver:
 	  loop waiting6
 	  call printStrWBI
 	    		
-	  mov cx,10 
+	  mov cx,3 
 	  waiting7:    
 	  call delay
 	  loop waiting7
@@ -2114,7 +2485,7 @@ gameOver:
 	  push ax
 	  call printStrWBIFast
 	  
-	  mov cx,12 
+	  mov cx,3 
 	  waiting8:    
 	  call delay
 	  loop waiting8
@@ -2126,7 +2497,7 @@ gameOver:
 	  push ax
 	  call printStrWBIFast
 	  
-	  mov cx,12  
+	  mov cx,3  
 	  waiting9:    
 	  call delay
 	  loop waiting9
@@ -2138,7 +2509,7 @@ gameOver:
 	  push ax
 	  call printStrWBIFast
 	  
-	  mov cx,12  
+	  mov cx,3  
 	  waiting10:    
 	  call delay
 	  loop waiting10
@@ -2192,7 +2563,7 @@ gameOver:
 	  
 	  push 4    ;x  or col  or x-pos
 	  push 15   ;y  or row  or y-pos
-	  push 0x03
+	  push 0x0a
 	  mov ax,GameResultsInstruction1
 	  push ax
 	  call printStrWBI
@@ -2200,7 +2571,7 @@ gameOver:
 	  
 	  push 4    ;x  or col  or x-pos
 	  push 17  ;y  or row  or y-pos
-	  push 0x03
+	  push 0x0c
 	  mov ax,GameResultsInstruction2
 	  push ax
 	  call printStrWBI
@@ -3953,7 +4324,7 @@ printShapes:
 	printNextShape_1:
 		
 	  push 0x20
-	  push 0x70                            
+	  push 0x20                            
 	  push 71    ;x  or col  or x-pos          
 	  push 20    ;y  or row  or y-pos          
 	  call shape_1
@@ -3962,7 +4333,7 @@ printShapes:
 	printNextShape_2:
 	
 	  push 0x20
-	  push 0x70                                ;[bp+8]  for accessing
+	  push 0x30                                ;[bp+8]  for accessing
 	  push 68    ;x  or col  or x-pos           ;[bp+6]  for accessing
 	  push 20    ;y  or row  or y-pos          ;[bp+4]  for accessing
 	  call shape_2
@@ -3971,7 +4342,7 @@ printShapes:
     printNextShape_3:
 	
 	  push 0x20
-	  push 0x70                                ;[bp+8]  for accessing
+	  push 0x40                                ;[bp+8]  for accessing
 	  push 72    ;x  or col  or x-pos           ;[bp+6]  for accessing
 	  push 20    ;y  or row  or y-pos          ;[bp+4]  for accessing
 	  call shape_3
@@ -3981,7 +4352,7 @@ printShapes:
 	printNextShape_4:
 	
 	  push 0x20
-	  push 0x70                                ;[bp+8]  for accessing
+	  push 0x60                                ;[bp+8]  for accessing
 	  push 69    ;x  or col  or x-pos           ;[bp+6]  for accessing
 	  push 20    ;y  or row  or y-pos          ;[bp+4]  for accessing
 	  call shape_4
@@ -3990,7 +4361,7 @@ printShapes:
 	printNextShape_5:
 
 	  push 0x20
-	  push 0x70                                ;[bp+8]  for accessing
+	  push 0x50                                ;[bp+8]  for accessing
 	  push 71    ;x  or col  or x-pos           ;[bp+6]  for accessing
 	  push 20    ;y  or row  or y-pos          ;[bp+4]  for accessing
 	  call shape_5
@@ -4003,7 +4374,17 @@ printShapes:
 
 
 nextShape:    ;main fundamental driver func..
+    
+	
+	;-------------------------
+	keepGamePaused:
+    cmp word[gamePause],1
+	jne skipPauseFunc
+	jmp keepGamePaused
 
+	skipPauseFunc:
+	;-------------------------
+	
     cmp word[gameRunnningFlag],0
     jne gameContinues
 	jmp timeUpsOrGameLose
@@ -4116,7 +4497,7 @@ nextShape:    ;main fundamental driver func..
 	nextShapePrintedSuccessfully:
 	
 	mov word[shapeCurrRow],1  ;TO AVOID READING BEFORE THE FIRST ROW WHILE CHECKING SHAPE FEASIBILITY!
-	mov word[shapeCurrCol],28   ; our center in between red wall boundaries...
+	mov word[shapeCurrCol],35   ; our center in between red wall boundaries...
 		
 		
 	falling:    
@@ -4482,13 +4863,13 @@ scanScreenWithInBoundary:
 	push 0xb800
 	pop es
 	mov ax,0020h 	;attributes empty space
-	mov di,162 		;starting point of main frame ( 162 is the location of first character of our main frame first row)
+	mov di,206 		;starting point of main frame ( 206 is the location of first character of our main frame first row)
 	mov word[totalRowsOfMainFrameToBeScan],23 		;total rows of main frame between boundaries
 	
 	scanNextRow:   ;this scans one complete row...
 		push di
 		push cx
-		mov cx,60   	;width of main frame ( a counter for total no of characters in a row )
+		mov cx,26   	;width of main frame ( a counter for total no of characters in a row )
 		cld
 		repne scasw ; compare [es:di] with ax
 		cmp cx,0   ;does the comlete row contain any empty black space or not if not then it means it is completely filled 
@@ -4507,7 +4888,7 @@ scanScreenWithInBoundary:
 		;ONE COMPLETE ROW FILLED FOUNDED SO ELIMINATE THAT ROW...
 	
 		push cx      ;to preserve the value the value of 60 because we are running the next loop using this counter which makes cx zero ...
-		mov cx,60      ;total characters in row of main frame...
+		mov cx,26      ;total characters in row of main frame...
 		eliminatingRow:
 		mov word[es:di],0x0020
 		add di,2		
@@ -4570,7 +4951,7 @@ scrollTheWholeFrame:
 	scrollingRow:
 		push di
 		push si
-		mov cx,60 ;cx holds width of frame
+		mov cx,26 ;cx holds width of frame
 		
 		std ;auto decrement mode
 		rep movsw   ;does instant job but we want to it look like animation so making our own animation func :)		
@@ -4612,7 +4993,7 @@ scrollTheWholeFrame:
 	mov ax,0xb800
 	mov es,ax
 
-	mov cx,50
+	mov cx,10
 	waitCountDown_1:
 	call delay
 	loop waitCountDown_1
@@ -5020,7 +5401,7 @@ selectDificultyLevs:
 mov ax,0xb800
 mov es,ax
 
-  mov cx,50
+  mov cx,10
 	  instructionPrintingWait_1:
 	  call delay
 	  loop instructionPrintingWait_1
@@ -5250,15 +5631,15 @@ mov es,ax
 	
 	push 0xb800
 	pop es
-	mov ax,0020h 	;attributes empty space
+	mov ax,0020h 	;attributes of empty space
 	
-	mov di,162 		;starting point of main frame ( 162 is the location of first character of our main frame first row)
+	mov di,206 		;starting point of main frame ( 210 is the location of first character of our main frame first row)
 	mov dx,23 		;total rows of main frame between boundaries
 	
 	blackNextRow:   ;this scans one complete row...
 		push di
 		push cx
-		mov cx,60   	;width of main frame ( a counter for total no of characters in a row )
+		mov cx,26   	;width of main frame ( a counter for total no of characters in a row )
 		blacking:
 		mov word[es:di],ax
 		add di,2
@@ -5284,38 +5665,42 @@ mov es,ax
 
 
 start:
-	  call printGameNameAndInstructions
+	call clrScr
+	mov cx,50
+	justTakeAMomentToStartUpThings:
+	call delay
+	loop justTakeAMomentToStartUpThings
+	
+    call makeGameLogo
+	call printGameNameAndInstructions
 	 
 gameStart:	  
-            mov word[gameStartedFlag],0
-			mov word[choiceConfirmedFlag],0
-            call selectDificultyLevs
-            ;call clrScr  ;temporary
-			call printCountDown
+	mov word[gameStartedFlag],0
+	mov word[choiceConfirmedFlag],0
+    call selectDificultyLevs
+	call printCountDown
 	
-	  ;reset everything 
-	  mov word[decisionForReplay],0 
-	  mov word[currSeconds],0
-	  mov word[currScore],0
-	  mov word[gameRunnningFlag],1
-	  mov word[gameTimerFlag],0
-	  mov word[keyboardFlag],1
+	;reset everything 
+	mov word[decisionForReplay],0 
+	mov word[currSeconds],0
+	mov word[currScore],0
+	mov word[gameRunnningFlag],1
+	mov word[gameTimerFlag],0
+	mov word[keyboardFlag],1
 	  
-	   call initialSetupOfGame
+	call initialSetupOfGame
 	 
-	 ;GENERATING RANDOM NO's IN MAIN (start) for the inital first shape in game...
-	 call generateRandomNumber
-	 mov ax,[shapeNo]
-	 mov word[nextShapeNo],ax
+	;GENERATING RANDOM NO's IN MAIN (start) for the inital first shape in game...
+	call generateRandomNumber
+	mov ax,[shapeNo]
+	mov word[nextShapeNo],ax
 	 	 	 
-	  call printShapes
+	call printShapes
 	  	  
-   timeUpsOrGameLose:
-  mov word[gameTimerFlag],0
-  mov word[gameRunnningFlag],0
-  
-
-	call gameOver
+	timeUpsOrGameLose:
+		mov word[gameTimerFlag],0
+		mov word[gameRunnningFlag],0
+		call gameOver
 
 quitGame:
  call clrScr
