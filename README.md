@@ -1,7 +1,7 @@
 # 🧩 Tetris Game - Assembly 0x88 
 
-## 🌟 Overview
 
+## 🌟 Overview
 ![](assets/design.png)
 
 Welcome to the Tetris game developed in Assembly 8088 language! This classic puzzle game comes with a variety of functionalities to provide an engaging gaming experience.
