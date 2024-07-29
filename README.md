@@ -24,9 +24,6 @@ Welcome to the Tetris game developed in Assembly 8088 language! This classic puz
 	- Press ESC to quit the game.
 - **Full Screen Mode**: Press ALT + ENTER for an amazing visual experience of the game.
 
-
-
-
 ## 📺 Watch Gameplay
 For watching the complete gameplay of the game, check out the YouTube video at the following link:
 [Gameplay Video](https://youtu.be/0pRhh-2Oqj4?si=BfQkafR_ErrQr72V)
@@ -34,9 +31,9 @@ For watching the complete gameplay of the game, check out the YouTube video at t
 ## 🚀 Startup Guide
 
 ### 💻 Mounting Guide for DOSBox
-	1. Open the dos.config file at the estimated path below and paste the commands at the end of the document. Replace the defaultUser with your default username registered on Windows: `C:\Users\defaultUser\Downloads\TetrisGame-0x88\dosboxPortable\Data\settings`
-	2. After mounting, start the game by clicking on the dosbox.exe shortcut and wait for approximately 1 minute for compiling the code (compile time depends on the specs of your machine).
-	3. Once the t.com file is created, you can comment out the line nasm t.asm -o t.com in the config file of dosbox located at `TetrisGame-0x88\dosboxPortable\Data\settings\dosbox.conf` for quicker startup in the future. This can be done by putting a # before the line.
+- Open the dos.config file at the estimated path below and paste the commands at the end of the document. Replace the defaultUser with your default username registered on Windows: `C:\Users\defaultUser\Downloads\TetrisGame-0x88\dosboxPortable\Data\settings`
+- After mounting, start the game by clicking on the dosbox.exe shortcut and wait for approximately 1 minute for compiling the code (compile time depends on the specs of your machine).
+- Once the t.com file is created, you can comment out the line nasm t.asm -o t.com in the config file of dosbox located at `TetrisGame-0x88\dosboxPortable\Data\settings\dosbox.conf` for quicker startup in the future. This can be done by putting a # before the line.
 	
 ### 🛠️ Configuration
 Add the following lines at the end of the dos.config file:
@@ -48,26 +45,10 @@ c:
 nasm t.asm -o t.com
 t.com
 ```
-	
-	
-	
+
 ## 📜 License
 
-The code in this repository is licensed under the MIT License. 
-
-MIT License
-
-Copyright (c)  2024 | maazkhan75
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This project is licensed under the `GNU General Public License`.
 
 ## 📦 Installation
 
@@ -88,11 +69,6 @@ git clone https://github.com/maazkhan75/Tetris-0x88
 ![](assets/5.png)
 ![](assets/6.png)
 ![](assets/7.png)
-
-## ShortGameplay
-
-![](assets/shortGameplay.mp4)
-
 
 
 
