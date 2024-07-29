@@ -9,9 +9,9 @@ Welcome to the Tetris game developed in Assembly 8088 language! This classic puz
 ## 🎮 Gameplay Instructions
 
 - **Difficulty Modes**: The game can be played in three different difficulty modes:
-		1. Easy
-		2. Medium
-		3. Hard
+	- `Easy`
+	- `Medium`
+	- `Hard`
 - **Game Duration**: Total Game Time = 15 minutes (900 seconds)
 - **Game Over Conditions**: The game will be over if the shapes touch the roof or time is completed.
 - **Controls**:
