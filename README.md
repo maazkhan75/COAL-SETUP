@@ -15,6 +15,7 @@ Welcome to the Tetris game developed in Assembly 8088 language! This classic puz
 	- `Hard`
 - **Game Duration**: Total Game Time = 15 minutes (900 seconds) ⏳
 - **Game Over Conditions**: The game will be over if the shapes touch the roof or time is completed. 🚫
+- **Printing Effect**: The game has printing or writing effect which is obtained by using delay simply ⏱️
 - **Controls**:
 	- Use ⬅️ key for moving the shape left.
 	- Use ➡️ key for moving the shape right.
