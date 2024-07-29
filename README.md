@@ -62,13 +62,13 @@ git clone https://github.com/maazkhan75/Tetris-0x88
       
 ## 📸 Screenshots of Game
 
-![](assets/1.png)
-![](assets/2.png)
-![](assets/3.png)
-![](assets/4.png)
-![](assets/5.png)
-![](assets/6.png)
-![](assets/7.png)
+![](pics/1.png)
+![](pics/2.png)
+![](pics/3.png)
+![](pics/4.png)
+![](pics/5.png)
+![](pics/6.png)
+![](pics/7.png)
 
 
 
