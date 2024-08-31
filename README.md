@@ -27,8 +27,10 @@ Welcome to the Tetris game developed in Assembly 8088 language! This classic puz
 - **Full Screen Mode**: Press `ALT + ENTER` for an amazing visual experience of the game. 🖥️
 
 ## 📺 Watch Gameplay
-For watching the complete gameplay of the game, check out the YouTube video at the following link:
-[Gameplay Video](https://youtu.be/0pRhh-2Oqj4?si=BfQkafR_ErrQr72V) 🎥
+
+https://github.com/user-attachments/assets/5f9d75ef-a760-45a4-915c-17597edc6672
+
+
 
 ## 🚀 Startup Guide
 
