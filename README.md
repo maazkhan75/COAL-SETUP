@@ -61,7 +61,7 @@ This project is licensed under the `GNU General Public License`.
 ## 📦 Clone repository
 
 ```bash
-git clone https://github.com/maazkhan75/Tetris-0x88
+git clone https://github.com/maazkhandev75/Tetris-0x88
 ```
 
       
